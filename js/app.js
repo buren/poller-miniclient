@@ -1,18 +1,25 @@
-console.log('Hello world!');
+BASE_URL = 'https://throwawaypoll.herokuapp.com';
+QUESTION = 'test42'
+
+function request(path, params, callback) {
+  var url = BASE_URL + path;
+  $.getJSON(url, params, function(json) {
+    callback(json);
+  });
+}
 
 function getResult() {
-  var url = 'https://throwawaypoll.herokuapp.com/result';
-  $.getJSON(url, {question: 'test2'}, function(json, textStatus) {
+  var params = {question: QUESTION};
+  request('/result', params, function(json) {
     console.log('Result', json);
     new Chartkick.ColumnChart('chart', json);
   });
 }
 
 function submitAnswer(element) {
-  var $el = $(element);
-  var url = 'https://throwawaypoll.herokuapp.com/poll';
-  var value = $el.attr('data-value');
-  $.getJSON(url, {question: 'test2', value: value}, function(json, textStatus) {
-    console.log('Repsonse', json);
+  var value = $(element).attr('data-value');
+  var params = {question: QUESTION, value: value};
+  request('/poll', params, function(json) {
+    console.log('Response', json);
   });
 }
