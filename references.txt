@@ -1,5 +1,0 @@
-Result: https://throwawaypoll.herokuapp.com/result
-
-Submit: https://throwawaypoll.herokuapp.com/poll
-
-jQuery: https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js
